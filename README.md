@@ -1,5 +1,5 @@
 # PiPass
-![Maintainability](https://api.codeclimate.com/v1/badges/9d4a537646feea510ddf/maintainability)
+<a href="https://codeclimate.com/github/roenw/PiPass/issues">![Maintainability](https://api.codeclimate.com/v1/badges/9d4a537646feea510ddf/maintainability)</a>
 ![version](https://img.shields.io/github/release/roenw/pipass.svg?label=release)
 ![GitHub pull-requests](https://img.shields.io/github/issues-pr-raw/roenw/pipass.svg?color=blue)
 ![GitHub pull-requests](https://img.shields.io/github/issues-raw/roenw/pipass.svg?color=red)
@@ -7,7 +7,7 @@
 PiPass is an extention to the Pi-Hole project which adds easy temporary unblocking functionality and a visually appealing blockpage. The whole project currently is written in PHP, so it will integrate very easily with your existing Pi-Hole system. The blockpage is very easy to use, presenting three distinct options, an automated, temporary unblock button among them.
 
 <p align="center">
-  <a href="https://roen.us/wp-content/uploads/2019/05/pipass-blockpage.gif"><img src="https://roen.us/wp-content/uploads/2019/05/pipass-blockpage.gif" width="75%" height="75%"></a><br/>
+  <a href="https://https://apps.roen.us/pipass/blockpage.png"><img src="https://apps.roen.us/pipass/blockpage.png" width="75%" height="75%"></a><br/>
   <strong>PiPass blockpage</strong><br />
 </p>
 
@@ -30,17 +30,17 @@ Root (sudo) access to Pi-Hole
 * Knowledge of location of webroot (normaly this can be found under /var/www/html/)
 * Webroot folder without any index files (e.g. no index.php/index.html/etc.)
 * Knowledge of which user PHP is running as
-* Optional: Domain or subdomain linked to your Pi-Hole
+* Optional, will improve functionality: Domain or subdomain linked to your Pi-Hole
 
 Install
 ------
-**NOTE:** Versions 1.2/1.2b and below are now deprecated due to not having automatic update checking functionality. Please update immediately by removing your current installation and following this much simpler setup guide.
+Installation on a vanilla Pi-Hole is completely automated. Execute ``bash <(wget -qO- https://kubrick.roen.us/pipass/scripts/install.sh)`` to install.
 
-1. Make your webserver redirect all 404 errors to the webroot. 
+If you have a more complex installation (e.g. using ``NGiNX`` as a webserver), follow these steps below.
 
-2. PiHole uses lighttpd as a webserver by default. As such, this installer will configure 404 redirects for it by default. Other web servers will need to configure this manually.
+1. Make your webserver redirect all 404 errors to the webroot. If you use ``lighttpd``, this function is automated.
 
-For nginx, this is
+For ``NGiNX``, this is
 
 ```
         location / {
@@ -49,9 +49,9 @@ For nginx, this is
         }
 ```
 
-3. Execute ``cd ~/ && wget -O setup.php https://apps.roen.us/pipass/setup && sudo php setup.php`` to download the setup script and rename it.
+3. ``bash <(wget -qO- https://kubrick.roen.us/pipass/scripts/install.sh)`` - You may be prompted for elevated permissions using ``sudo``.
 
-4. Fill out the ``config.php`` configuration file.
+4. Optional: fill out the ``config.php`` configuration file.
 
 Support
 ------
@@ -62,12 +62,11 @@ Pull requests are welcome!
 Known Caveats
 ------
 * Requires webroot index
-* Requires end-user to (sometimes) clear their DNS cache
 * Does not work on websites with HSTS header cached :(
 
 
 Future Ideas
 ------
 * Ability to trigger permanent whitelist after password entry
-* Admin console for PiPass
-* apt repository/package
+* Admin console for PiPass (currently in the works)
+* apt repository/package and Docker image
